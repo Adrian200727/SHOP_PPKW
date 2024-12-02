@@ -24,7 +24,18 @@
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
-                    
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('cart.index') }}">
+                                     <i class="fas fa-shopping-cart"></i> Cart
+                                    @if (auth()->check() && auth()->user()->carts->count() > 0)
+                                    <span class="badge bg-danger">{{ auth()->user()->carts->count() }}</span>
+                                    @endif
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                 </header>
 
             @endisset
