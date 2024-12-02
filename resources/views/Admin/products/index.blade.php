@@ -6,6 +6,8 @@
                 <button type="submit" class="btn btn-primary">Search</button>
             </form>
 
+
+
             <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">Add Product</a>
             <table class="table">
                 <thead>
@@ -43,6 +45,11 @@
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                 </form>
+                                                            <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="quantity" value="1">
+                                <button type="submit" class="btn btn-primary">Add to Cart</button>
+                            </form>
                             </td>
                         </tr>
                     @endforeach

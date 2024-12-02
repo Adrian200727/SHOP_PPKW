@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\Admin;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\User;
 
@@ -55,4 +56,12 @@ Route::prefix('admin')->middleware(['auth', 'role.access:admin'])->group(functio
     Route::put('/products/{product}', [CrudController::class, 'update'])->name('products.update');
     Route::get('/products', [CrudController::class, 'index'])->name('products.index');
 
+});
+
+// keranjang
+
+Route::middleware('auth')->group(function () {
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/{product}', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::delete('/cart/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 });

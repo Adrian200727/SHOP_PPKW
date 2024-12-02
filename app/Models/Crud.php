@@ -17,4 +17,9 @@ class Crud extends Model
         'stock',
         'image'
     ];
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }
