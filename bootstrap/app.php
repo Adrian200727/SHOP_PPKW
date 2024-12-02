@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         'role.access' => \App\Http\Middleware\RoleBasedAccess::class,
         'admin' => \App\Http\Middleware\AdminRole::class,
+        'role' => \App\Http\Middleware\RoleMiddleware::class,
         ]);
 
 

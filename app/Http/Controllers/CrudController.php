@@ -20,6 +20,7 @@ class CrudController extends Controller
         })->get();
 
         return view('admin.products.index', compact('products'));
+        
     }
 
 
